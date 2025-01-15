@@ -1,0 +1,597 @@
+.training-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #18181b;
+  color: white;
+  position: relative;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.training-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, rgba(34, 197, 94, 0.1), rgba(24, 24, 27, 0.2));
+  backdrop-filter: blur(100px);
+  z-index: 0;
+}
+
+.session-card {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(24, 24, 27, 0.95);
+  border: 1px solid #27272A;
+  border-radius: 8px;
+  padding: 1rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  width: 90%;
+  height: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.session-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.button-primary {
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  min-width: 180px;
+  margin: 0 auto;
+  font-weight: 500;
+}
+
+.button-primary:hover {
+  background-color: #16a34a;
+  transform: translateY(-1px);
+}
+
+.button-primary:active {
+  transform: translateY(0);
+}
+
+.button-primary:disabled {
+  background-color: #27272a;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.button-icon {
+  background: none;
+  border: none;
+  color: #a1a1aa;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.button-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.recovery-message {
+  margin-top: 1rem;
+  text-align: center;
+  color: #a1a1aa;
+}
+
+.exercise-card {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: black;
+  z-index: 50;
+}
+
+.video-element {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.exercise-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.exercise-title {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.exercise-title.recovery {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.exercise-timer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.timer {
+  font-size: 4.5rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  font-family: monospace;
+}
+
+.timer.recovery {
+  color: #4ade80;
+}
+
+.recovery-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+}
+
+.recovery-text.active {
+  color: #4ade80;
+}
+
+.timer-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.875rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.timer-button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.timer-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.exercise-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+}
+
+.exercise-item {
+  background-color: rgba(24, 24, 27, 0.95);
+  border: 1px solid #3f3f46;
+  border-radius: 6px;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.exercise-item:hover {
+  background-color: rgba(39, 39, 42, 0.95);
+  transform: translateY(-1px);
+  border-color: #22c55e;
+}
+
+.exercise-icon {
+  color: #22c55e;
+}
+
+.exercise-name {
+  flex-grow: 1;
+}
+
+.exercise-duration {
+  color: #a1a1aa;
+}
+
+.summary-footer {
+  margin-top: 1rem;
+  text-align: center;
+  border-top: 1px solid #3f3f46;
+  padding-top: 1rem;
+}
+
+.summary-footer p {
+  color: #a1a1aa;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.video-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 160px;
+  height: 240px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #18181b;
+  border: 1px solid #27272A;
+}
+
+.video-controls {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.congratulations-card {
+  background-color: rgba(24, 24, 27, 0.9);
+  border: 1px solid #27272A;
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 32rem;
+  margin: auto;
+  text-align: center;
+}
+
+.trophy-icon {
+  color: #eab308;
+  margin-bottom: 1rem;
+}
+
+.xp-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #22c55e;
+  margin: 1rem 0;
+}
+
+.navigation-buttons {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  transform: translateY(-50%);
+}
+
+.progress-bar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 1rem;
+}
+
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+.progress-info {
+  text-align: center;
+  color: white;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.progress-bars {
+  display: flex;
+  gap: 4px;
+  height: 4px;
+  padding: 0 1rem;
+}
+
+.progress-bar-item {
+  flex: 1;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.progress-bar-item.completed {
+  background: #4ade80;
+}
+
+.progress-bar-item.current {
+  background: #fff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.phase-section {
+  margin-bottom: 1rem;
+  background-color: rgba(39, 39, 42, 0.95);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #3f3f46;
+}
+
+.phase-section:last-child {
+  margin-bottom: 1rem;
+}
+
+.phase-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #3f3f46;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.phase-repetitions {
+  color: #22c55e;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.phase-duration {
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-align: right;
+  font-style: italic;
+}
+
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 1rem;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.nav-arrow:hover {
+  opacity: 1;
+}
+
+.nav-arrow.prev {
+  left: 1rem;
+}
+
+.nav-arrow.next {
+  right: 1rem;
+}
+
+.camera-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  transition: background-color 0.2s;
+}
+
+.camera-button:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.camera-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.eye-button {
+  position: absolute;
+  top: 4rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 90;
+  transition: all 0.2s ease;
+}
+
+.eye-button:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.05);
+}
+
+.eye-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.completion-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.completion-content {
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  max-width: 320px;
+  width: 90%;
+  animation: slideUp 0.5s ease-out;
+}
+
+.completion-icon {
+  margin-bottom: 1.5rem;
+  color: white;
+  animation: bounce 2s infinite;
+}
+
+.completion-content h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: white;
+}
+
+.completion-content p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.xp-gained {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.xp-icon {
+  color: white;
+  opacity: 0.9;
+  animation: rotate 3s linear infinite;
+}
+
+.restart-button {
+  background: white;
+  color: black;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.restart-button svg {
+  opacity: 0.7;
+}
+
+.restart-button:hover {
+  transform: translateY(-2px);
+  background: #f0f0f0;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.restart-button:hover svg {
+  opacity: 1;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

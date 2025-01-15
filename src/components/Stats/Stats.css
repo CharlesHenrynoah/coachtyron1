@@ -1,0 +1,91 @@
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #09090b;
+  padding: 1rem;
+  padding-bottom: 80px;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: #18181B;
+  border-bottom: 1px solid #27272A;
+  margin-bottom: 2rem;
+}
+
+.stats-title {
+  margin: 0;
+  font-size: 2rem;
+  color: #f97316;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.stats-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card h3 {
+  margin: 0;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.stat-card p {
+  margin: 0.5rem 0 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.chart-wrapper {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chart-wrapper h2 {
+  margin: 0 0 1rem;
+  color: #333;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .charts-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .charts-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
