@@ -10,7 +10,7 @@ html, body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 2rem;
+  padding: 1rem;
   background-color: #09090b;
 }
 
@@ -55,7 +55,7 @@ html, body {
   width: 100%;
   max-width: 800px;
   margin: 2rem auto;
-  padding: 3rem;
+  padding: 2rem;
   background-color: rgba(24, 24, 27, 0.8);
   border: 1px solid rgba(39, 39, 42, 0.8);
   border-radius: 16px;
@@ -79,7 +79,7 @@ html, body {
   width: 100%;
   background: rgba(39, 39, 42, 0.6);
   border-radius: 12px;
-  padding: 1rem 2rem;
+  padding: 1rem;
   margin-bottom: 1.5rem;
   transition: all 0.3s ease;
 }
@@ -95,7 +95,7 @@ html, body {
   color: white !important;
   border-right: 2px solid rgba(63, 63, 70, 0.6) !important;
   font-family: 'Orbitron', sans-serif !important;
-  padding-right: 2rem !important;
+  padding: 0.5rem !important;
 }
 
 .country-select .MuiSelect-select {
@@ -147,7 +147,7 @@ html, body {
 .continue-button {
   background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
   color: white !important;
-  padding: 1.25rem !important;
+  padding: 1rem !important;
   border-radius: 12px !important;
   font-weight: 600 !important;
   text-transform: uppercase !important;
@@ -307,7 +307,7 @@ html, body {
 
   .form-container {
     margin: 1rem auto;
-    padding: 1.5rem;
+    padding: 2rem;
     border-radius: 12px;
   }
 
