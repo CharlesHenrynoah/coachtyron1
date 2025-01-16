@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Camera, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import './video-feed.css'
 
 export default function VideoFeed({ onClose }) {

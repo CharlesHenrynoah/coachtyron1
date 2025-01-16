@@ -16,9 +16,6 @@ export default function ProgressBar({
   const totalExercisesInPhase = phase.exercises.length
   const totalCycles = phase.repetitions
 
-  // Calculer le nombre d'exercices complétés
-  const completedExercises = ((currentCycle - 1) * totalExercisesInPhase) + (currentExercise - 1)
-
   // Générer les bâtons de progression pour le cycle actuel
   const progressBars = Array(totalExercisesInPhase).fill(0).map((_, index) => {
     const isCompleted = index < currentExercise - 1

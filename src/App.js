@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './components/theme';
-import Login from './components/Login';
-import Home from './components/Home';
 import SignupStep1 from './components/SignupStep1';
+import SignupStep2Manual from './components/SignupStep2Manual';
+import SignupStepGoogle from './components/SignupStepGoogle';
 import Chat from './components/Chat';
 import TrainingSession from './components/TrainingSession/training-session';
 import Stats from './components/Stats/Stats';
@@ -16,11 +16,12 @@ function App() {
     <ThemeProvider theme={theme}>
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<SignupStep1 />} />
           <Route path="/signup" element={<SignupStep1 />} />
+          <Route path="/signup/step2" element={<SignupStep2Manual />} />
+          <Route path="/signup-step-google" element={<SignupStepGoogle />} />
           <Route path="/chat" element={<Chat />} />
-          <Route path="/training-session" element={<TrainingSession />} />
+          <Route path="/training" element={<TrainingSession />} />
           <Route path="/stats" element={<Stats />} />
           <Route path="/session-history" element={<SessionHistory />} />
         </Routes>

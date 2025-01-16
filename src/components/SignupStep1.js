@@ -6,22 +6,29 @@ import {
   Divider, 
   Box, 
   Container,
-  LinearProgress
+  LinearProgress,
+  Alert
 } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
+import { useNavigate } from 'react-router-dom';
+import { createUser, signInWithGoogle } from '../firebase/userService';
 import './SignupStep1.css';
 
 const SignupStep1 = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordStrength, setPasswordStrength] = useState(0);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const isFormValid = () => {
     return email.trim() !== '' && 
            password.trim() !== '' && 
            confirmPassword.trim() !== '' &&
-           password === confirmPassword;
+           password === confirmPassword &&
+           !loading;
   };
 
   const calculatePasswordStrength = (password) => {
@@ -38,6 +45,11 @@ const SignupStep1 = () => {
     const newPassword = e.target.value;
     setPassword(newPassword);
     setPasswordStrength(calculatePasswordStrength(newPassword));
+    if (confirmPassword && newPassword !== confirmPassword) {
+      setError('Passwords do not match');
+    } else {
+      setError('');
+    }
   };
 
   const getPasswordStrengthColor = () => {
@@ -48,17 +60,54 @@ const SignupStep1 = () => {
     return '#4caf50';
   };
 
-  const handleEmailSignup = (e) => {
+  const handleEmailSignup = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      console.log('Passwords do not match');
+      setError('Passwords do not match');
       return;
     }
-    console.log('Email signup:', email, password);
+    if (passwordStrength < 60) {
+      setError('Password is too weak. Please use a stronger password.');
+      return;
+    }
+    
+    setLoading(true);
+    setError('');
+    
+    try {
+      await createUser(email, password);
+      navigate('/signup/step2');
+    } catch (err) {
+      console.error('Signup error:', err);
+      setError(err.message || 'An error occurred during signup');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleGoogleSignup = () => {
-    console.log('Google signup clicked');
+  const handleGoogleSignup = async () => {
+    setLoading(true);
+    setError('');
+    
+    try {
+      await signInWithGoogle();
+      navigate('/signup/step2');
+    } catch (err) {
+      console.error('Google signup error:', err);
+      setError(err.message || 'An error occurred during Google signup');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleConfirmPasswordChange = (e) => {
+    const value = e.target.value;
+    setConfirmPassword(value);
+    if (password !== value) {
+      setError('Passwords do not match');
+    } else {
+      setError('');
+    }
   };
 
   return (
@@ -67,6 +116,12 @@ const SignupStep1 = () => {
         <Typography component="h1" variant="h5" className="title">
           Create Account
         </Typography>
+        
+        {error && (
+          <Alert severity="error" sx={{ width: '100%', mb: 2 }}>
+            {error}
+          </Alert>
+        )}
         
         <Box component="form" onSubmit={handleEmailSignup} className="form-container">
           <TextField
@@ -81,6 +136,8 @@ const SignupStep1 = () => {
             autoFocus
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            disabled={loading}
+            error={error.includes('email')}
           />
           <TextField
             className="text-field"
@@ -93,6 +150,8 @@ const SignupStep1 = () => {
             id="password"
             value={password}
             onChange={handlePasswordChange}
+            disabled={loading}
+            error={error.includes('password')}
           />
           <Box className="password-strength">
             <LinearProgress
@@ -126,16 +185,18 @@ const SignupStep1 = () => {
             type="password"
             id="confirmPassword"
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={handleConfirmPasswordChange}
+            disabled={loading}
+            error={error.includes('match')}
           />
           <Button
             className="submit-button"
             type="submit"
             fullWidth
             variant="contained"
-            disabled={!isFormValid()}
+            disabled={!isFormValid() || loading}
           >
-            Next Step
+            {loading ? 'Creating Account...' : 'Next Step'}
           </Button>
         </Box>
 
@@ -147,8 +208,9 @@ const SignupStep1 = () => {
           variant="outlined"
           startIcon={<GoogleIcon />}
           onClick={handleGoogleSignup}
+          disabled={loading}
         >
-          Continue with Google
+          {loading ? 'Connecting...' : 'Continue with Google'}
         </Button>
 
         <Box className="account-section">
@@ -159,6 +221,8 @@ const SignupStep1 = () => {
             className="signin-button"
             variant="contained"
             fullWidth
+            onClick={() => navigate('/login')}
+            disabled={loading}
           >
             Sign in
           </Button>

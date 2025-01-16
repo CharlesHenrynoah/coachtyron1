@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react'
-import ProgressBar from './progress-bar'
 import './TrainingSession.css'
 
 export default function ExerciseCard({
@@ -36,7 +35,7 @@ export default function ExerciseCard({
       }, 10)
     }
     return () => clearInterval(interval)
-  }, [isTimerRunning, handleTimerComplete])
+  }, [isTimerRunning, timeLeft, handleTimerComplete])
 
   useEffect(() => {
     setTimeLeft((isRecovery ? 15 : exercise.duration) * 100)

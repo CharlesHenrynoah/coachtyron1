@@ -1,78 +1,257 @@
 .container-box {
-  margin-top: 64px;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  background-color: #000000;
   align-items: center;
+  padding: 2rem;
+}
+
+.signup-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 1rem;
+  background: #18181b;
+  border-bottom: 1px solid #27272a;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .title {
-  margin-bottom: 24px;
+  margin: 0;
+  color: #fff !important;
+  font-family: 'Orbitron', sans-serif !important;
+  font-size: 2rem !important;
+  margin-bottom: 3rem !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  grid-column: 2;
 }
 
 .form-container {
-  margin-top: 8px;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  overflow-y: auto;
+  background-color: #09090b;
+}
+
+.form-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.form-container::-webkit-scrollbar-thumb {
+  background-color: rgba(249, 115, 22, 0.3);
+  border-radius: 3px;
+}
+
+.form {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
 }
 
 .text-field {
   width: 100%;
+  margin-bottom: 2rem !important;
 }
 
-.text-field .MuiOutlinedInput-root:hover fieldset {
-  border-color: #f97316;
+.text-field .MuiInputLabel-root {
+  color: #888 !important;
+  font-family: 'Orbitron', sans-serif !important;
+  font-size: 1.2rem !important;
 }
 
-.text-field .MuiOutlinedInput-root.Mui-focused fieldset {
-  border-color: #f97316;
+.text-field .MuiOutlinedInput-root {
+  background-color: rgba(40, 40, 40, 0.8);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
 }
 
-.text-field .MuiInputLabel-root.Mui-focused {
-  color: #f97316;
+.text-field .MuiOutlinedInput-input {
+  color: #fff !important;
+  font-family: 'Orbitron', sans-serif !important;
+  font-size: 1.2rem !important;
+  padding: 1.2rem !important;
 }
 
-.submit-button {
-  margin-top: 24px !important;
-  margin-bottom: 16px !important;
+.text-field .MuiOutlinedInput-notchedOutline {
+  border: none !important;
+}
+
+.text-field .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border: none !important;
+}
+
+.text-field .MuiOutlinedInput-root.Mui-focused {
+  background-color: rgba(60, 60, 60, 0.8);
+}
+
+.text-field .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border: none !important;
+}
+
+.password-strength {
+  width: 100%;
+  margin: 0.5rem 0 2rem 0;
+}
+
+.password-strength .MuiLinearProgress-root {
+  background-color: rgba(40, 40, 40, 0.8) !important;
+  border-radius: 4px;
+  height: 4px !important;
+}
+
+.password-strength .MuiLinearProgress-bar {
   background-color: #f97316 !important;
 }
 
-.submit-button:hover {
-  background-color: #fb923c !important;
+.password-strength .MuiTypography-caption {
+  color: #888 !important;
+  font-family: 'Orbitron', sans-serif !important;
+  margin-top: 0.5rem;
+  font-size: 0.9rem !important;
 }
 
-.submit-button.Mui-disabled {
-  background-color: rgba(249, 115, 22, 0.3) !important;
+.submit-button {
+  width: 100%;
+  background-color: rgba(40, 40, 40, 0.8) !important;
+  color: #f97316 !important;
+  font-family: 'Orbitron', sans-serif !important;
+  padding: 1.2rem !important;
+  font-size: 1.2rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  border-radius: 10px !important;
+  margin-top: 1rem !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+}
+
+.submit-button:hover {
+  background-color: rgba(60, 60, 60, 0.8) !important;
+  transform: translateY(-2px);
+}
+
+.submit-button:disabled {
+  background-color: rgba(30, 30, 30, 0.8) !important;
+  color: #666 !important;
 }
 
 .divider {
   width: 100%;
-  margin: 24px 0 !important; /* Augmentation de la marge de 16px à 24px */
+  margin: 2rem 0 !important;
+  color: #666 !important;
+  text-transform: uppercase;
+  font-family: 'Orbitron', sans-serif !important;
+  font-size: 1rem !important;
+}
+
+.divider::before,
+.divider::after {
+  border-color: #333 !important;
 }
 
 .google-button {
   width: 100%;
-  border-color: #f97316 !important;
-  color: #f97316 !important;
+  background-color: rgba(40, 40, 40, 0.8) !important;
+  color: #fff !important;
+  font-family: 'Orbitron', sans-serif !important;
+  padding: 1.2rem !important;
+  font-size: 1.2rem !important;
+  border-radius: 10px !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+  margin-bottom: 2rem !important;
 }
 
 .google-button:hover {
-  border-color: #fb923c !important;
-  background-color: rgba(249, 115, 22, 0.04) !important;
+  background-color: rgba(60, 60, 60, 0.8) !important;
+  transform: translateY(-2px);
+}
+
+.google-button .MuiSvgIcon-root {
+  color: #f97316 !important;
+  font-size: 1.5rem !important;
+  margin-right: 1rem !important;
 }
 
 .account-section {
-  margin-top: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #18181b;
+  border-top: 1px solid #27272a;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.account-section .MuiTypography-body2 {
+  color: #888 !important;
+  font-family: 'Orbitron', sans-serif !important;
+  font-size: 1rem !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem !important;
 }
 
 .signin-button {
-  background-color: #f97316 !important;
-  min-width: 200px;
-  width: 100%;
+  background-color: transparent !important;
+  color: #f97316 !important;
+  font-family: 'Orbitron', sans-serif !important;
+  font-size: 1.2rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  border: none !important;
+  padding: 0 !important;
+  transition: all 0.3s ease !important;
 }
 
 .signin-button:hover {
-  background-color: #fb923c !important;
+  color: #ea580c !important;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .container-box {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .text-field .MuiInputLabel-root,
+  .text-field .MuiOutlinedInput-input,
+  .submit-button,
+  .google-button,
+  .signin-button {
+    font-size: 1rem !important;
+  }
+
+  .text-field .MuiOutlinedInput-input {
+    padding: 1rem !important;
+  }
+
+  .submit-button,
+  .google-button {
+    padding: 1rem !important;
+  }
 }

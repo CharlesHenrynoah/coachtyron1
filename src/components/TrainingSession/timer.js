@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export default function Timer({ duration, isRunning, isRecovery }) {
+export default function Timer({ duration, isRunning, isRecovery, onComplete }) {
   const [timeLeft, setTimeLeft] = useState(duration)
   const recoveryTime = 15 // 15 seconds recovery time
 
@@ -9,18 +9,17 @@ export default function Timer({ duration, isRunning, isRecovery }) {
   }, [duration, isRecovery])
 
   useEffect(() => {
-    let timer
+    let interval
 
     if (isRunning && timeLeft > 0) {
-      timer = setInterval(() => {
+      interval = setInterval(() => {
         setTimeLeft((prevTime) => prevTime - 1)
       }, 1000)
+    } else if (timeLeft === 0) {
+      onComplete()
     }
-
-    return () => {
-      if (timer) clearInterval(timer)
-    }
-  }, [isRunning, timeLeft])
+    return () => clearInterval(interval)
+  }, [isRunning, timeLeft, onComplete])
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60)

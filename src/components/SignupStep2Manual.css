@@ -1,0 +1,108 @@
+.signup-step2-container {
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-container {
+    margin-top: 8px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.form-field {
+    width: 100%;
+}
+
+/* Contour orange pour les champs de saisie */
+.form-field .MuiOutlinedInput-root,
+.MuiOutlinedInput-root {
+    & fieldset {
+        border-color: #f97316;
+    }
+    &:hover fieldset {
+        border-color: #f97316;
+    }
+    &.Mui-focused fieldset {
+        border-color: #f97316;
+    }
+}
+
+/* Style spécifique pour le champ de date */
+input[type="date"] {
+    border-color: #f97316 !important;
+    &:focus {
+        border-color: #f97316 !important;
+        outline-color: #f97316 !important;
+    }
+}
+
+/* Style des boutons radio */
+.MuiFormControl-root .MuiFormLabel-root.Mui-focused {
+    color: #f97316;
+}
+
+.MuiRadio-root.Mui-checked {
+    color: #f97316 !important;
+}
+
+/* Style du groupe de boutons de mesure */
+.measurement-toggle {
+    margin: 24px 0;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.measurement-toggle .MuiToggleButton-root {
+    border-color: #f97316;
+    color: #f97316;
+}
+
+.measurement-toggle .MuiToggleButton-root.Mui-selected {
+    background-color: #f97316;
+    color: white;
+}
+
+.measurement-toggle .MuiToggleButton-root.Mui-selected:hover {
+    background-color: #fb923c;
+}
+
+/* Style du bouton Next */
+.next-button {
+    margin-top: 24px !important;
+    margin-bottom: 16px !important;
+    background-color: #f97316 !important;
+    width: 100%;
+}
+
+.next-button:hover {
+    background-color: #fb923c !important;
+}
+
+.next-button.Mui-disabled {
+    background-color: rgba(249, 115, 22, 0.3) !important;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .form-container {
+        padding: 0 16px;
+    }
+}
