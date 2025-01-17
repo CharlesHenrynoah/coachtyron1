@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-import { getAnalytics, isSupported } from 'firebase/analytics';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAyTMjZchxr4sxxj4Y59Bw-FMiR7GYVW9U",
@@ -20,9 +19,22 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-// Initialize Analytics only if supported
-let analytics = null;
-isSupported().then(yes => yes && (analytics = getAnalytics(app)))
-    .catch(err => console.log('Analytics not supported or blocked by CSP'));
+// Disable analytics for now due to third-party cookie restrictions
+export const analytics = null;
 
-export { analytics };
+// Optional: Initialize analytics only if explicitly needed in the future
+export const initializeAnalytics = async () => {
+    if (typeof window !== 'undefined' && process.env.REACT_APP_ENABLE_ANALYTICS === 'true') {
+        try {
+            const { getAnalytics, isSupported } = await import('firebase/analytics');
+            const analyticsSupported = await isSupported();
+            
+            if (analyticsSupported) {
+                return getAnalytics(app);
+            }
+        } catch (error) {
+            console.warn('Analytics initialization skipped:', error.message);
+        }
+    }
+    return null;
+};

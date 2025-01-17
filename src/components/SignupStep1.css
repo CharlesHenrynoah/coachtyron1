@@ -1,8 +1,19 @@
+/* Variables */
+:root {
+  --primary: #f97316;
+  --primary-hover: #fb923c;
+  --background: #09090b;
+  --surface: #18181b;
+  --text: #ffffff;
+  --text-secondary: #a1a1aa;
+  --error: #ef4444;
+}
+
 /* ===== Reset global ===== */
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #09090b;
+  background-color: var(--background);
 }
 
 /* ===== Container principal ===== */
@@ -10,8 +21,9 @@ html, body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 1rem;
-  background-color: #09090b;
+  padding: 2rem;
+  background-color: var(--background);
+  color: var(--text);
 }
 
 /* ===== Header ===== */
@@ -20,7 +32,7 @@ html, body {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   padding: 1rem;
-  background: #18181b;
+  background: var(--surface);
   border-bottom: 1px solid #27272a;
   position: sticky;
   top: 0;
@@ -31,7 +43,7 @@ html, body {
 .title {
   margin: 0;
   margin-bottom: 3rem !important;
-  color: #fff !important;
+  color: var(--text) !important;
   font-family: 'Orbitron', sans-serif !important;
   font-size: 2rem !important;
   text-transform: uppercase;
@@ -41,7 +53,7 @@ html, body {
 
 /* ===== Sous-titre ===== */
 .subtitle {
-  color: #a1a1aa !important;
+  color: var(--text-secondary) !important;
   text-align: center;
   margin-bottom: 2rem !important;
   font-size: 1rem !important;
@@ -92,7 +104,7 @@ html, body {
 .country-select {
   min-width: 200px !important;
   background: transparent !important;
-  color: white !important;
+  color: var(--text) !important;
   border-right: 2px solid rgba(63, 63, 70, 0.6) !important;
   font-family: 'Orbitron', sans-serif !important;
   padding: 0.5rem !important;
@@ -111,7 +123,7 @@ html, body {
 }
 
 .country-select .MuiSvgIcon-root {
-  color: #f97316 !important;
+  color: var(--primary) !important;
   font-size: 1.5rem !important;
   transition: transform 0.3s ease;
 }
@@ -132,7 +144,7 @@ html, body {
 }
 
 .phone-input-field {
-  color: white !important;
+  color: var(--text) !important;
   font-size: 1.1rem !important;
   padding: 0.75rem !important;
   font-family: 'Orbitron', sans-serif !important;
@@ -145,8 +157,8 @@ html, body {
 
 /* ===== Bouton Continuer ===== */
 .continue-button {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
-  color: white !important;
+  background: linear-gradient(135deg, var(--primary) 0%, #ea580c 100%) !important;
+  color: var(--text) !important;
   padding: 1rem !important;
   border-radius: 12px !important;
   font-weight: 600 !important;
@@ -160,7 +172,7 @@ html, body {
 }
 
 .continue-button:hover {
-  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+  background: linear-gradient(135deg, var(--primary-hover) 0%, #ea580c 100%) !important;
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(249, 115, 22, 0.3) !important;
 }
@@ -169,14 +181,13 @@ html, body {
   background: linear-gradient(135deg, rgba(249, 115, 22, 0.5) 0%, rgba(234, 88, 12, 0.5) 100%) !important;
   transform: none;
   box-shadow: none !important;
-  cursor: not-allowed;
 }
 
 /* ===== Séparateur (ou "OR") ===== */
 .divider {
   width: 100%;
   margin: 1.5rem 0 !important;
-  color: #a1a1aa !important;
+  color: var(--text-secondary) !important;
   text-transform: uppercase !important;
   font-size: 0.875rem !important;
   font-family: 'Orbitron', sans-serif !important;
@@ -190,8 +201,8 @@ html, body {
 
 /* ===== Bouton Google ===== */
 .google-button {
-  background-color: #27272a !important;
-  color: white !important;
+  background-color: var(--surface) !important;
+  color: var(--text) !important;
   padding: 1rem !important;
   border-radius: 8px !important;
   text-transform: uppercase !important;
@@ -211,13 +222,13 @@ html, body {
 }
 
 .google-button .MuiSvgIcon-root {
-  color: #f97316 !important;
+  color: var(--primary) !important;
   font-size: 1.5rem !important;
 }
 
 /* ===== Texte Conditions ===== */
 .terms-text {
-  color: #a1a1aa !important;
+  color: var(--text-secondary) !important;
   text-align: center;
   font-size: 0.75rem !important;
   font-family: 'Orbitron', sans-serif !important;
@@ -231,18 +242,18 @@ html, body {
 }
 
 .terms-link {
-  color: #f97316 !important;
+  color: var(--primary) !important;
   text-transform: uppercase !important;
   padding: 0 2px !important;
   min-width: 0 !important;
   font-size: 0.75rem !important;
   text-decoration: none !important;
   font-family: 'Orbitron', sans-serif !important;
-  transition: color 0.2s ease !important;
+  transition: color 0.2s ease;
 }
 
 .terms-link:hover {
-  color: #ea580c !important;
+  color: var(--primary-hover) !important;
 }
 
 /* ===== Champ recherche pays ===== */
@@ -251,7 +262,7 @@ html, body {
 }
 
 .country-search .MuiInputBase-root {
-  color: white !important;
+  color: var(--text) !important;
   font-family: 'Orbitron', sans-serif !important;
   background: #3f3f46 !important;
   border-radius: 4px !important;
@@ -268,7 +279,7 @@ html, body {
 
 .country-code {
   margin-left: auto;
-  color: #a1a1aa;
+  color: var(--text-secondary);
   font-family: 'Orbitron', sans-serif;
 }
 
@@ -279,11 +290,11 @@ html, body {
 }
 
 .policy-checkbox {
-  color: #f97316 !important;
+  color: var(--primary) !important;
 }
 
 .policy-checkbox.Mui-checked {
-  color: #f97316 !important;
+  color: var(--primary) !important;
 }
 
 .policy-label {

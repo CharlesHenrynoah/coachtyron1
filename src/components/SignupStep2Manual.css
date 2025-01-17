@@ -1,108 +1,190 @@
+/* ===== Variables ===== */
+:root {
+  --primary: #f97316;
+  --primary-dark: #ea580c;
+  --primary-light: #fdba74;
+  --background: #09090b;
+  --surface: rgba(24, 24, 27, 0.8);
+  --surface-light: rgba(39, 39, 42, 0.6);
+  --text: #ffffff;
+  --text-secondary: #a1a1aa;
+  --spacing: 16px;
+  --border-radius: 12px;
+}
+
+/* ===== Container Principal ===== */
 .signup-step2-container {
-    margin-top: 64px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    max-width: 600px;
-    margin: 0 auto;
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #09090b;
+  min-height: 100vh;
+  color: white;
 }
 
+.title {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  margin-bottom: 24px !important;
+  text-align: center;
+  color: var(--text) !important;
+}
+
+/* ===== Conteneur du Formulaire ===== */
 .form-container {
-    margin-top: 8px;
-    width: 100%;
-    max-width: 400px;
+  margin-top: 8px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: rgba(24, 24, 27, 0.8);
+  padding: 2rem;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
 }
 
-.form-row {
-    display: flex;
-    gap: 16px;
-    width: 100%;
-    margin-bottom: 16px;
-}
-
+/* ===== Champs de Formulaire ===== */
 .form-field {
-    width: 100%;
+  flex: 1;
+  width: 100%;
 }
 
-/* Contour orange pour les champs de saisie */
+/* Style des champs de texte */
 .form-field .MuiOutlinedInput-root,
 .MuiOutlinedInput-root {
-    & fieldset {
-        border-color: #f97316;
-    }
-    &:hover fieldset {
-        border-color: #f97316;
-    }
-    &.Mui-focused fieldset {
-        border-color: #f97316;
-    }
+  background-color: rgba(39, 39, 42, 0.6);
+}
+
+.form-field .MuiOutlinedInput-root fieldset,
+.MuiOutlinedInput-root fieldset {
+  border-color: #f97316;
+}
+
+.form-field .MuiOutlinedInput-root:hover fieldset,
+.MuiOutlinedInput-root:hover fieldset {
+  border-color: #f97316;
+}
+
+.form-field .MuiOutlinedInput-root.Mui-focused fieldset,
+.MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: #f97316;
+}
+
+/* Style pour les inputs */
+.MuiInputBase-input {
+  color: white !important;
+}
+
+.MuiInputLabel-root {
+  color: #a1a1aa !important;
+}
+
+.MuiInputLabel-root.Mui-focused {
+  color: #f97316 !important;
 }
 
 /* Style spécifique pour le champ de date */
 input[type="date"] {
-    border-color: #f97316 !important;
-    &:focus {
-        border-color: #f97316 !important;
-        outline-color: #f97316 !important;
-    }
+  border-color: #f97316 !important;
+  color: white !important;
+  background-color: rgba(39, 39, 42, 0.6);
+  padding: 16.5px 14px;
+  border-radius: 4px;
+}
+
+input[type="date"]:focus {
+  border-color: #f97316 !important;
+  outline-color: #f97316 !important;
 }
 
 /* Style des boutons radio */
+.MuiFormControl-root .MuiFormLabel-root {
+  color: #a1a1aa;
+}
+
 .MuiFormControl-root .MuiFormLabel-root.Mui-focused {
-    color: #f97316;
+  color: #f97316;
+}
+
+.MuiRadio-root {
+  color: #a1a1aa !important;
 }
 
 .MuiRadio-root.Mui-checked {
-    color: #f97316 !important;
+  color: #f97316 !important;
 }
 
-/* Style du groupe de boutons de mesure */
-.measurement-toggle {
-    margin: 24px 0;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
+.MuiFormControlLabel-label {
+  color: white !important;
 }
 
-.measurement-toggle .MuiToggleButton-root {
-    border-color: #f97316;
-    color: #f97316;
+/* Style du select */
+.MuiSelect-select {
+  color: white !important;
 }
 
-.measurement-toggle .MuiToggleButton-root.Mui-selected {
-    background-color: #f97316;
-    color: white;
+.MuiMenuItem-root {
+  color: #a1a1aa;
 }
 
-.measurement-toggle .MuiToggleButton-root.Mui-selected:hover {
-    background-color: #fb923c;
+/* Rangée de formulaire */
+.form-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 16px;
 }
 
-/* Style du bouton Next */
+/* Bouton Next */
 .next-button {
-    margin-top: 24px !important;
-    margin-bottom: 16px !important;
-    background-color: #f97316 !important;
-    width: 100%;
+  margin-top: 24px !important;
+  margin-bottom: 16px !important;
+  background-color: #f97316 !important;
+  width: 200px;
+  align-self: center;
+  color: white !important;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .next-button:hover {
-    background-color: #fb923c !important;
+  background-color: #fb923c !important;
 }
 
 .next-button.Mui-disabled {
-    background-color: rgba(249, 115, 22, 0.3) !important;
+  background-color: rgba(249, 115, 22, 0.3) !important;
 }
 
 /* Responsive design */
 @media (max-width: 600px) {
-    .form-row {
-        flex-direction: column;
-        gap: 16px;
-    }
-    
-    .form-container {
-        padding: 0 16px;
-    }
+  .signup-step2-container {
+    padding: 1rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .form-container {
+    padding: 1.5rem;
+  }
+
+  .next-button {
+    width: 100%;
+  }
+}
+
+/* ===== Safe Area (iOS) ===== */
+@supports (padding: max(0px)) {
+  .signup-step2-container {
+    padding-left: max(var(--spacing), env(safe-area-inset-left));
+    padding-right: max(var(--spacing), env(safe-area-inset-right));
+    padding-bottom: max(var(--spacing), env(safe-area-inset-bottom));
+  }
 }
